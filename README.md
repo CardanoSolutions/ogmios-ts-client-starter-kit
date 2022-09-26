@@ -1,21 +1,90 @@
 # Ogmios Client Starter Kit
 
-A NodeJS package that provides several examples of how to leverage Ogmios typescript client to execute local-state-queries, chain-sync and tx-monitoring operations against a node.
+This repo provides a NodeJS package with several examples of how to leverage Ogmios typescript client to execute local-state-queries, chain-sync and tx-monitoring operations against a node.
 
-## Get started
+## Dev Environment
 
-Install dependencies by running the following command:
+### Option #1: Manual Setup
+
+For running this starter kit you'll need access to an Ogmios instance connected to a fully synced instance of a Cardano Node. You can read the setup instructions on the documentation for each corresponding component
+
+### Option #2: Demeter.run
+
+If you don't want to install the required components yourself, you can use [Demeter.run](https://demeter.run) platform to create a cloud environment with access to common Cardano infrastrcuture. The following command will open this repo in a private, web-based VSCode IDE with access to a shared Cardano Node and Ogmios.
+
+[![Run in Cardano Workspace](./docs/cta-v1-pink.png)](https://demeter.run/actions/run?repository=https://github.com/txpipe/ogmios-client-starter-kit.git&template=typescript)
+
+## Getting started
+
+> **Note**
+> The following instructions assumes that you're using a Cardano Workspace.
+
+Once you've finished with the Cardano Workspace creation process, you should be able to access this codebase from a VSCode IDE instance. Open this README file using the Markdown Preview command to continue this guide from inside the workspace.
+
+Since this is a NodeJS package, the next step is to install the npm dependencies. This can be done by opening the embedded terminal within the VSCode IDE.
+
+> **Note**
+> There's no need to install NodeJS or NPM, these tools are already available as part of your workspace.
+
+From within the terminal, run the following npm command to install the dependencies:
 
 ```sh
 npm install
 ```
 
-Execute any of the available examples:
+When npm finishes, you should be able to execute the examples.
+
+### Run the Chain-Sync example
+
+This example shows how to connect to Ogmios using the Chain-Sync mini-protocol, which allows us to syncrhonize the state of the chain by "pulling" block data.
+
+The code for this example lives in `src/chainsync.ts`. To start the example, you can use the npm run script called `start:chainsync` defined in the `package.json` file. Open the embedded VSCode terminal and execute the following command:
 
 ```sh
-# an example of the Chain-Sync client 
 npm run start:chainsync
+```
 
-# an example of the Loca-State client
+### Run the Local-State example
+
+This example shows how to connect to Ogmios using the Local-State mini-protocol, which allows us to execute queries about the state of the node using request / response semantics.
+
+The code for this example lives in `src/localstate.ts`. To start the example, you can use the npm run script called `start:localstate` defined in the `package.json` file. Open the embedded VSCode terminal and execute the following command:
+
+```sh
 npm run start:localstate
 ```
+
+## FAQ
+
+### How do I connect to the Ogmios instance?
+
+Ogmios works as a lightweight bridge between the Cardano Node and HTTP web-socket clients. There are many client libraries available but we'll be using only the Typescript client for this starter-kit.
+
+To initialize the client library, the host and port where the Ogmios instance is listening needs to be specified.
+
+> **Note**
+> When running inside a _Cardano Workspace_, these values are already available as environmental variables: `OGMIOS_HOST` and `OGMIOS_PORT`.
+
+The following snippet shows an exmample of how to setup an "interaction context" that will hold the connection between your client and the Ogmios instance. 
+
+```ts
+import { createInteractionContext } from '@cardano-ogmios/client'
+
+const context = createInteractionContext(
+    err => console.error(err),
+    () => console.log("Connection closed."),
+    { connection: { host: process.env.OGMIOS_HOST, port: parseInt(process.env.OGMIOS_PORT!) } }
+);
+```
+
+### Where can I get more info about Ogmios?
+
+Ogmios is developed by [Cardano Solutions](https://github.com/cardanosolutions) and the main contributor / maintainer is [Matthias Benkort](https://github.com/KtorZ). The codebase lives in the [Ogmios](https://github.com/cardanosolutions/ogmios) Github repository. Thechincal documentation can be found in [ogmios.dev](https://ogmios.dev/) website.
+
+## DIY Ideas
+
+Here are some ideas on how to continue the development of this starter kit as a way to understand the rest of Ogmios features. These tasks can be acomplished by reading the Ogmios [typescript client documentation](https://ogmios.dev/typescript-client/) and some extrapolation from the existing examples:
+
+- [ ] Submit a Tx using the Tx-Submission mini-protocol
+- [ ] Query a particular UTxO by specifying the Tx hash and index.
+- [ ] Check the state of the mempool using the Tx-Monitor mini-protocol
