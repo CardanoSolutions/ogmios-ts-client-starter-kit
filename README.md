@@ -34,16 +34,6 @@ npm install
 
 When npm finishes, you should be able to execute the examples.
 
-### Run the Chain-Sync example
-
-This example shows how to connect to Ogmios using the Chain-Sync mini-protocol, which allows us to syncrhonize the state of the chain by "pulling" block data.
-
-The code for this example lives in `src/chainsync.ts`. To start the example, you can use the npm run script called `start:chainsync` defined in the `package.json` file. Open the embedded VSCode terminal and execute the following command:
-
-```sh
-npm run start:chainsync
-```
-
 ### Run the Local-State example
 
 This example shows how to connect to Ogmios using the Local-State mini-protocol, which allows us to execute queries about the state of the node using request / response semantics.
@@ -52,6 +42,16 @@ The code for this example lives in `src/localstate.ts`. To start the example, yo
 
 ```sh
 npm run start:localstate
+```
+
+### Run the Chain-Sync example
+
+This example shows how to connect to Ogmios using the Chain-Sync mini-protocol, which allows us to syncrhonize the state of the chain by "pulling" block data.
+
+The code for this example lives in `src/chainsync.ts`. To start the example, you can use the npm run script called `start:chainsync` defined in the `package.json` file. Open the embedded VSCode terminal and execute the following command:
+
+```sh
+npm run start:chainsync
 ```
 
 ## FAQ
