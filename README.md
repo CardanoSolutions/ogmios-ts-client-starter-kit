@@ -12,7 +12,7 @@ For running this starter kit you'll need access to an Ogmios instance connected 
 
 If you don't want to install the required components yourself, you can use [Demeter.run](https://demeter.run) platform to create a cloud environment with access to common Cardano infrastrcuture. The following command will open this repo in a private, web-based VSCode IDE with access to a shared Cardano Node and Ogmios.
 
-[![Run in Cardano Workspace](./docs/cta-v1-pink.png)](https://demeter.run/actions/run?repository=https://github.com/txpipe/ogmios-client-starter-kit.git&template=typescript)
+[![Run in Cardano Workspace](https://demeter.run/code/badge.svg)](https://demeter.run/code/?repository=https://github.com/txpipe/ogmios-client-starter-kit.git&template=typescript)
 
 ## Getting started
 
