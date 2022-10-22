@@ -1,16 +1,15 @@
 {
   "name": "ogmios-client-starter-kit",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "An example start kit for Ogmios with the TypeScript client",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start:chainsync": "npm run build && node dist/chainsync.js",
-    "start:localstate": "npm run build && node dist/localstate.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "local-chain-sync": "npm run build && node dist/local-chain-sync.js",
+    "local-state-query": "npm run build && node dist/local-state-query.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Scarmuega <santiago@carmuega.me>, KtorZ <matthias.benkort@gmail.com>",
+  "license": "MPL-2.0",
   "devDependencies": {
     "@types/ws": "^8.5.3",
     "typescript": "^4.8.3"

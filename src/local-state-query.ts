@@ -1,20 +1,20 @@
-import { createStateQueryClient, createTxMonitorClient, safeJSON } from '@cardano-ogmios/client';
+import { createStateQueryClient } from '@cardano-ogmios/client';
 import { createContext } from './context';
 
-export async function executeQueries() {
+export async function runExample() {
     const context = await createContext();
     const client = await createStateQueryClient(context)
-    
+
     const height = await client.blockHeight();
     console.log(`height: ${height}`);
 
     const tip = await client.chainTip();
-    console.log(`tip: ${safeJSON.stringify(tip)}`);
-    
+    console.log(`tip: ${JSON.stringify(tip, null, 2)}`);
+
     const params = await client.currentProtocolParameters();
-    console.log(`params: ${safeJSON.stringify(params)}`);
+    console.log(`params: ${JSON.stringify(params, null, 2)}`);
 
     client.shutdown();
 }
 
-executeQueries().then(() => console.log("done")).catch(err => console.error(err));
+runExample()
