@@ -1,6 +1,11 @@
 # Ogmios Client Starter Kit
 
-This repo provides a NodeJS package with several examples of how to leverage Ogmios typescript client to execute local-state-queries, local-chain-sync and local-tx-submission and local-tx-monitoring protocols against a node.
+This repo provides a NodeJS package with several examples of how to leverage Ogmios typescript client to:
+
+✓ Execute ledger state and network queries;<br/>
+✓ Synchronize blocks from the chain;<br/>
+✓ Monitor a local mempool;<br/>
+✓ Submit or evaluate transactions<br/>
 
 ## Dev Environment
 
@@ -46,7 +51,7 @@ yarn local-state-query
 
 ### Run the Local-Chain-Sync example
 
-This example shows how to connect to Ogmios using the Local-Chain-Sync mini-protocol, which allows us to syncrhonize the state of the chain by "pulling" block data.
+This example shows how to connect to Ogmios using the Local-Chain-Sync mini-protocol, which allows us to synchronize the state of the chain by "pulling" block data.
 
 The code for this example lives in `src/local-chain-sync.ts`. To start the example, you can run the script called `local-chain-sync` defined in the `package.json` file. Open the embedded VSCode terminal and execute the following command:
 
@@ -82,14 +87,14 @@ const context = createInteractionContext(
 
 ### Where can I get more info about Ogmios?
 
-Ogmios is developed by [Cardano Solutions](https://github.com/cardanosolutions) and the main contributor / maintainer is [KtorZ](https://github.com/KtorZ). The codebase lives in the [CardanoSolutions/Ogmios](https://github.com/cardanosolutions/ogmios) Github repository. Technical documentation and API reference can be found at [ogmios.dev](https://ogmios.dev/).
+Ogmios is developed by [Cardano Solutions](https://github.com/cardanosolutions). The codebase lives in the [CardanoSolutions/Ogmios](https://github.com/cardanosolutions/ogmios) Github repository. Technical documentation and API reference can be found at [ogmios.dev](https://ogmios.dev/).
 
 ## DIY Ideas
 
-Here are some ideas on how to continue the development of this starter kit as a way to understand the rest of Ogmios features. These tasks can be acomplished by reading the Ogmios [typescript client documentation](https://ogmios.dev/typescript-client/) and some extrapolation from the existing examples:
+Here are some ideas on how to continue the development of this starter kit as a way to understand the rest of Ogmios features. These tasks can be acomplished by reading the Ogmios [typescript client documentation](https://ogmios.dev/typescript/api/modules/_cardano_ogmios_client.html) and some extrapolation from the existing examples:
 
 - [ ] Query a particular UTxO by output reference.
 
-- [ ] Submit a Tx using the Local-Tx-Submission mini-protocol.
+- [ ] Submit a transaction using the _Transaction Submission_ mini-protocol.
 
-- [ ] Check the state of the mempool using the Tx-Monitor mini-protocol.
+- [ ] Check the state of the mempool using the _Mempool Monitoring_ mini-protocol.
