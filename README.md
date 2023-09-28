@@ -59,6 +59,20 @@ The code for this example lives in `src/local-chain-sync.ts`. To start the examp
 yarn local-chain-sync
 ```
 
+### Run the Local-Mempool-Monitor example
+
+This example shows a basic scenario of fetching transactions from your node mempool. If your node is running as a simple relay, then the transactions list is likely empty. However, you can try visualizing transactions in the mempool by submitting some while the example scenario is running.
+
+Note that this example never exits and will await for changes in the mempool to happen.
+
+The code for this example lives in `src/local-mempool-monitor.ts`. To start the example, you can run the script called `local-mempool-monitor` defined in the `package.json` file. Open the embedded VSCode terminal and execute the following command:
+
+```sh
+yarn local-mempool-monitor
+```
+
+---
+
 > **Warning**
 > The local-chain-sync example does not terminate, it'll start synchronizing blocks from the network tip until your stop it (`CTRL-C`). You'll also notice that it always starts with a _Roll backward_ instruction, from where it'll continue syncing.
 
