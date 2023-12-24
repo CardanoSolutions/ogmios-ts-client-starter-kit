@@ -13,7 +13,9 @@ async function flushMempool(
     client: MempoolMonitoring.MempoolMonitoringClient
 ): Promise<TransactionId[]> {
     let transactions = [];
-    for(let transactionId = await client.nextTransaction();;) {
+
+    for(;;){
+        const transactionId = await client.nextTransaction();
         if (transactionId !== null) {
             transactions.push(transactionId);
         } else {
