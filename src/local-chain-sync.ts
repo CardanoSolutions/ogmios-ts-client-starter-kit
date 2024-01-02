@@ -34,11 +34,8 @@ class Database {
     }
 }
 
-const replacer = (_key: any, block: Block) => {
-    // Avoids error when serializing BigInt
-    delete block['transactions'];
-    return block;
-}
+// Avoids error when serializing BigInt
+const replacer = (_key: any, value: any) => typeof value === 'bigint' ? value.toString() : value;
 
 const rollForward = (db : Database) => async ({ block }: { block: Block }, requestNextBlock: () => void) => {
     console.log(`Roll forward: ${JSON.stringify(block, replacer)}`);
